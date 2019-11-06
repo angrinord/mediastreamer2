@@ -523,7 +523,15 @@ MSCryptoSuite ms_crypto_suite_build_from_name_params(const MSCryptoSuiteNamePara
 		if (parameters && strstr(parameters,"UNENCRYPTED_SRTP")) return MS_NO_CIPHER_SHA1_80;
 		else if (parameters && strstr(parameters,"UNAUTHENTICATED_SRTP")) return MS_AES_128_NO_AUTH;
 		else return MS_AES_128_SHA1_80;
-	}else if ( keywordcmp ( "AES_CM_128_HMAC_SHA1_32",name ) == 0 ){
+	}
+	//	ADDED by Anthony
+    	else if ( keywordcmp ( "MS_AES_128_SHA1_80",name ) == 0 ){
+            return MS_AES_128_SHA1_80;
+    	}
+    	else if ( keywordcmp ( "MS_AES_128_SHA1_32",name ) == 0 ){
+            return MS_AES_128_SHA1_32;
+        }
+        else if ( keywordcmp ( "AES_CM_128_HMAC_SHA1_32",name ) == 0 ){
 		if (parameters && strstr(parameters,"UNENCRYPTED_SRTP")) goto error;
 		if (parameters && strstr(parameters,"UNAUTHENTICATED_SRTP")) return MS_AES_128_NO_AUTH;
 		else return MS_AES_128_SHA1_32;
